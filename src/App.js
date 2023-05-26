@@ -36,20 +36,24 @@ const App = () => {
   }, []);
 
   let content;
-   const amit = user?.data?.Locations[0]?.airComponents[0]?.sensorData;
-  console.log("dataaaa", amit);
+  const sensordata = user?.data?.Locations[0]?.airComponents[0]?.sensorData;
+  const sensorName = user?.data?.Locations[0]?.airComponents[0]?.sensorName;
+  const sensorUnits = user?.data?.Locations[0]?.airComponents[0]?.sensorUnit;
+  const sensorCaounts = user?.data?.Locations[0]?.sensorcount;
 
-  if (amit <= 40) {
+  console.log("dataaaa", sensordata);
+
+  if (sensordata <= 40) {
     content = <div>Good</div>;
-  } else if (amit == 50) {
+  } else if (sensordata == 50) {
     content = <div>Moderate</div>;
-  } else if (amit === 80) {
+  } else if (sensordata === 80) {
     content = <div>Poor</div>;
-  } else if (amit === 120) {
+  } else if (sensordata === 120) {
     content = <div>Unhealthy</div>;
-  } else if (amit === 160) {
+  } else if (sensordata === 160) {
     content = <div>Severe</div>;
-  } else if (amit >= 226) {
+  } else if (sensordata >= 226) {
     content = <div>Hazardous</div>;
   } else {
     content = <div>Default option</div>;
@@ -141,22 +145,21 @@ const App = () => {
                 <div className="group-427320198-tuU">
                   <div className="auto-group-bffc-QN2">
                     <div className="group-427320197-8J2">
-                      <div className="item-54-FtS">54</div>
+                      <div className="item-54-FtS">{sensordata}</div>
                       <div className="aqi-Lut">AQI</div>
                     </div>
                     <div className="auto-group-xcf8-de6">
                       <div className="new-delhi-Mpz">{cityName}</div>
-                      <div className="good-T7L">Good</div>
+                      <div className="good-T7L">{content}</div>
                     </div>
                   </div>
                   <div className="rectangle-34624653-mdp"></div>
                   <div className="auto-group-huis-qta">
-                    <div className="pm25-kVk">PM2.5</div>
+                    <div className="pm25-kVk">{sensorName}</div>
                     <div className="group-427320196-4WS">
-                      <div className="item-20-DPL">20</div>
+                      <div className="item-20-DPL">{sensorCaounts}</div>
                       <div className="g-m3-jsU">
-                        <span className="g-m3-jsU-sub-0">μg/m</span>
-                        <span className="g-m3-jsU-sub-1">3</span>
+                        <span className="g-m3-jsU-sub-0">{sensorUnits}</span>
                       </div>
                     </div>
                   </div>
@@ -201,7 +204,6 @@ const App = () => {
             </span>
           </p>
           <div className="container">
-            <h4>Hello</h4>
             <div className="row">
               {user?.data?.Locations[0]?.airComponents?.map((item, key) => (
                 <div className="col-lg-4 col-md-6">
@@ -242,7 +244,7 @@ const App = () => {
                 <div className="auto-group-8qjt-76v">
                   {user?.data?.Locations[0]?.forecast?.forecastday.map(
                     (item, index) => {
-                      console.log("pppp,",item)
+                      console.log("pppp,", item);
                       return (
                         <div className="group-427320305-dLA" key={index}>
                           <p className="monday-k9t">Monday</p>
@@ -250,13 +252,14 @@ const App = () => {
                             <div className="group-427320302-Jai">
                               <img
                                 className="item-26-38-zTY"
-                                src={item?.day?.condition?.icon
-                                }
+                                src={item?.day?.condition?.icon}
                               />
                             </div>
                             <div className="group-427320303-pxN">
                               <div className="group-427319213-vEi">
-                                <p className="item-35-dev">{item?.day?.avghumidity }</p>
+                                <p className="item-35-dev">
+                                  {item?.day?.avghumidity}
+                                </p>
                                 <p className="o-8Ln">O</p>
                               </div>
                               <img
@@ -270,7 +273,9 @@ const App = () => {
                               </div>
                             </div>
                           </div>
-                          <p className="mostly-sunny-LbG">{item?.day?.condition?.text}</p>
+                          <p className="mostly-sunny-LbG">
+                            {item?.day?.condition?.text}
+                          </p>
 
                           <div className="group-427320304-err">
                             <img
@@ -667,7 +672,7 @@ const App = () => {
                 backgroundColor: "#454B1B",
               })}
             />
-            ;<div className="ellipse-1036-kjG"></div>
+            <div className="ellipse-1036-kjG"></div>
             <div className="ellipse-1037-UfG"></div>
             <p className="item-0-D74">0</p>
             <p className="item-500-ipW">500+</p>
@@ -737,79 +742,101 @@ const App = () => {
             <p className="locate-me-qxJ">Locate me</p>
           </div>
         </div>
-        <div className="group-427320220-wVY">
-          <div className="auto-group-8n62-rMc">
-            <div className="group-427319748-nWA">
-              <img className="item-26-39-iei" src="/images/-TBC.png" />
-            </div>
-            <div className="auto-group-8fav-phk">
-              <div className="group-427319213-n8n">
-                <p className="item-35-XMG">35</p>
-                <p className="o-fCa">O</p>
-                <p className="c-aqL">C</p>
-              </div>
-              <p className="mostly-sunny-RLA">Mostly sunny</p>
-            </div>
-            <div className="auto-group-flwx-mQ2">
-              <div className="rectangle-34624374-HtA"></div>
-              <div className="group-427320216-mYS">
-                <div className="ellipse-1076-VUS"></div>
-                <div className="group-427320215-DQS">
-                  <p className="min-mRx">Min</p>
-                  <div className="auto-group-vexy-uHG">
-                    <img
-                      className="vector-718-SHC"
-                      src="/images/vector-718.png"
-                    />
-                    <div className="group-427319741-NAr">
-                      <p className="item-10-Kbt">10</p>
-                      <p className="o-rri">O</p>
-                      <p className="c-zxv">C</p>
+        {user?.data?.Locations?.map((item, index) => {
+          return (
+            <div className="row">
+              <div className="col-md-6">
+                <div className="group-427320220-wVY">
+                  <div className="auto-group-8n62-rMc">
+                    <div className="group-427319748-nWA">
+                      <img
+                        className="item-26-39-iei"
+                        src={item?.weatherdata?.condition?.icon}
+                      />
+                    </div>
+                    <div className="auto-group-8fav-phk">
+                      <div className="group-427319213-n8n">
+                        <p className="item-35-XMG">
+                          {item?.weatherdata?.temp_c}
+                        </p>
+                        <p className="o-fCa">O</p>
+                        <p className="c-aqL">C</p>
+                      </div>
+                      <p className="mostly-sunny-RLA">
+                        {item?.weatherdata?.condition?.text}
+                      </p>
+                    </div>
+                    <div className="auto-group-flwx-mQ2">
+                      <div className="rectangle-34624374-HtA"></div>
+                      <div className="group-427320216-mYS">
+                        <div className="ellipse-1076-VUS"></div>
+                        <div className="group-427320215-DQS">
+                          <p className="min-mRx">Min</p>
+                          <div className="auto-group-vexy-uHG">
+                            <img
+                              className="vector-718-SHC"
+                              src="/images/vector-718.png"
+                            />
+                            <div className="group-427319741-NAr">
+                              <p className="item-10-Kbt">10</p>
+                              <p className="o-rri">O</p>
+                              <p className="c-zxv">C</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="group-427320217-L1C">
+                        <div className="ellipse-1077-fpA"></div>
+                        <div className="group-427320214-CZC">
+                          <img
+                            className="vector-719-x2a"
+                            src="/images/vector-719.png"
+                          />
+                          <div className="group-427319742-fxa">
+                            <p className="item-40-nnJ">40</p>
+                            <p className="o-vdc">O</p>
+                            <p className="c-sYr">C</p>
+                          </div>
+                          <p className="max-R4a">Max</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="group-427320269-j5G">
+                    <div className="group-427320219-U2r">
+                      <img
+                        className="direction-svgrepo-com-1-DFL"
+                        src="/images/direction-svgrepo-com-1.png"
+                      />
+                      <p className="km-hr-jDg">
+                        {item?.weatherdata?.vis_km}km/hr
+                      </p>
+                    </div>
+                    <div className="group-427320218-USA">
+                      <img
+                        className="droplets-01-svgrepo-com-1-q1p"
+                        src="/images/droplets-01-svgrepo-com-1-JpE.png"
+                      />
+                      <p className="item-70--kPg">
+                        {item?.weatherdata?.cloud}%
+                      </p>
+                    </div>
+                    <div className="group-427320220-go8">
+                      <img
+                        className="droplets-01-svgrepo-com-1-SnJ"
+                        src="/images/droplets-01-svgrepo-com-1.png"
+                      />
+                      <p className="item-70--NR4">
+                        {item?.weatherdata?.cloud} %
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="group-427320217-L1C">
-                <div className="ellipse-1077-fpA"></div>
-                <div className="group-427320214-CZC">
-                  <img
-                    className="vector-719-x2a"
-                    src="/images/vector-719.png"
-                  />
-                  <div className="group-427319742-fxa">
-                    <p className="item-40-nnJ">40</p>
-                    <p className="o-vdc">O</p>
-                    <p className="c-sYr">C</p>
-                  </div>
-                  <p className="max-R4a">Max</p>
-                </div>
-              </div>
             </div>
-          </div>
-          <div className="group-427320269-j5G">
-            <div className="group-427320219-U2r">
-              <img
-                className="direction-svgrepo-com-1-DFL"
-                src="/images/direction-svgrepo-com-1.png"
-              />
-              <p className="km-hr-jDg">11 km/hr</p>
-            </div>
-            <div className="group-427320218-USA">
-              <img
-                className="droplets-01-svgrepo-com-1-q1p"
-                src="/images/droplets-01-svgrepo-com-1-JpE.png"
-              />
-              <p className="item-70--kPg">70 %</p>
-            </div>
-            <div className="group-427320220-go8">
-              <img
-                className="droplets-01-svgrepo-com-1-SnJ"
-                src="/images/droplets-01-svgrepo-com-1.png"
-              />
-              <p className="item-70--NR4">70 %</p>
-            </div>
-          </div>
-        </div>
+          );
+        })}
+
         <div className="group-427319737-hiE">
           <div className="auto-group-kpmp-Ru8">
             <div className="auto-group-cu5g-yQr">
